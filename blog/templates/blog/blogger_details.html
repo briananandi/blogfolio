@@ -1,0 +1,29 @@
+{% extends "blog/base_generic.html" %}
+
+{% block title %} - {{ blogger.user.username }}{% endblock %}
+
+{% block content %}
+<h1>{{ blogger.user.username }}</h1>
+
+<div class="blogger-bio">
+    <h3>About</h3>
+    <p>{{ blogger.bio }}</p>
+</div>
+
+<hr class="divider-orange">
+
+<h3>Posts by {{ blogger.user.username }}</h3>
+
+{% if blogger.blogpost_set.all %}
+<ul class="posts-list">
+    {% for post in blogger.blogpost_set.all %}
+    <li>
+        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        <p class="post-meta">Posted: {{ post.post_date }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No posts yet from this blogger.</p>
+{% endif %}
+{% endblock %}
