@@ -2,12 +2,10 @@
 <html lang="en">
 
 <head>
-
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Fonts: Montserrat (sans) and Playfair Display (serif) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -22,7 +20,6 @@
 <body>
     <header>
         <h1><a href="{% url 'index' %}">Blogfolio</a></h1>
-
     </header>
 
     <main>
@@ -39,7 +36,13 @@
                 <ul>
                     {% if user.is_authenticated %}
                     <li><span class="user-info-display">User: {{ user.get_username }}</span></li>
-                    <li><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
+                    <li>
+                        <form action="{% url 'logout' %}" method="post" class="logout-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ request.path }}">
+                            <button type="submit" class="logout-link">Logout</button>
+                        </form>
+                    </li>
                     {% else %}
                     <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
                     {% endif %}

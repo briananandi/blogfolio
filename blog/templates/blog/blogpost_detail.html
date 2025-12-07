@@ -3,8 +3,9 @@
 {% block content %}
 <h1>{{ object.title }}</h1>
 
-<p class="text-muted">By <a href="{{ object.author.get_absolute_url }}">{{ object.author.user.username }}</a> on {{
-    object.post_date|date:"F j, Y" }}</p>
+<p class="post-meta text-muted">
+    By <a href="{{ post.author.get_absolute_url }}">{{ post.author.user.username }}</a> on {{ post.post_date }}
+</p>
 
 <div class="post-content">
     <p>{{ object.content }}</p>
