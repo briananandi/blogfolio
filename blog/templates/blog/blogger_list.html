@@ -6,15 +6,17 @@
 <h1>All Bloggers</h1>
 
 {% if blogger_list %}
-<ul class="bloggers-list">
+  <div class="detail-container">
     {% for blogger in blogger_list %}
-    <li>
-        <a href="{{ blogger.get_absolute_url }}">{{ blogger.user.username }}</a>
-        <p class="blogger-bio-preview">{{ blogger.bio|truncatewords:20 }}</p>
-    </li>
+      <div class="card post-card" style="margin-bottom: 15px; padding: 20px;">
+          <h3><a href="{{ blogger.get_absolute_url }}">{{ blogger.user.username }}</a></h3>
+          {% if blogger.bio %}
+            <p class="post-body" style="font-size: 1em;">{{ blogger.bio|truncatewords:20 }}</p>
+          {% endif %}
+      </div>
     {% endfor %}
-</ul>
+  </div>
 {% else %}
-<p>No bloggers yet.</p>
+  <p>No bloggers yet.</p>
 {% endif %}
 {% endblock %}
