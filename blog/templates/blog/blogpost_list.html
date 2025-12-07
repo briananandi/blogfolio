@@ -6,36 +6,39 @@
 <h1>All Blog Posts</h1>
 
 {% if blogpost_list %}
-<div class="posts-list-container">
+  <div class="detail-container">
     {% for post in blogpost_list %}
-    <div class="post-list-item">
-        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-        <p class="post-meta">
-            By <a href="{{ post.author.get_absolute_url }}">{{ post.author.user.username }}</a> on {{ post.post_date }}
-        </p>
-    </div>
+      <div class="card post-card" style="margin-bottom: 20px;">
+          <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+          <p class="post-meta">
+              By <a href="{{ post.author.get_absolute_url }}">{{ post.author.user.username }}</a> 
+              on {{ post.post_date }}
+          </p>
+          <p class="post-body">{{ post.content|truncatewords:30 }}</p>
+          <a href="{{ post.get_absolute_url }}" class="btn-primary" style="font-size: 0.8em; padding: 8px 16px;">Read More</a>
+      </div>
     {% endfor %}
-</div>
+  </div>
 
-<!-- Pagination -->
-<div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-        <a href="?page=1">&laquo; first</a>
-        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
+  <div class="pagination">
+      <span class="step-links">
+          {% if page_obj.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+          {% endif %}
 
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
+          <span class="current">
+              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+          </span>
 
-        {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">next</a>
-        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
-</div>
+          {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">next</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+          {% endif %}
+      </span>
+  </div>
+
 {% else %}
-<p>No blog posts yet.</p>
+  <p>No blog posts yet.</p>
 {% endif %}
 {% endblock %}
