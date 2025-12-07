@@ -1,29 +1,35 @@
 {% extends "blog/base_generic.html" %}
 
-{% block title %} - {{ blogger.user.username }}{% endblock %}
-
 {% block content %}
-<h1>{{ blogger.user.username }}</h1>
+<div class="detail-container">
 
-<div class="blogger-bio">
-    <h3>About</h3>
-    <p>{{ blogger.bio }}</p>
+  <div class="card post-card">
+    <h1>{{ blogger.user.username }}</h1>
+    {% if blogger.bio %}
+      <p class="post-body">{{ blogger.bio }}</p>
+    {% else %}
+      <p class="text-muted">No bio available.</p>
+    {% endif %}
+  </div>
+
+  <div class="card comments-card">
+    <h3>Posts by {{ blogger.user.username }}</h3>
+    
+    {% if blog_posts %}
+      {% for post in blog_posts %}
+        <div class="single-comment">
+          <p class="comment-header">
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+          </p>
+          <p class="comment-body text-muted">
+             Posted on {{ post.post_date }}
+          </p>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>This author has no posts yet.</p>
+    {% endif %}
+  </div>
+
 </div>
-
-<hr class="divider-orange">
-
-<h3>Posts by {{ blogger.user.username }}</h3>
-
-{% if blogger.blogpost_set.all %}
-<ul class="posts-list">
-    {% for post in blogger.blogpost_set.all %}
-    <li>
-        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-        <p class="post-meta">Posted: {{ post.post_date }}</p>
-    </li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>No posts yet from this blogger.</p>
-{% endif %}
 {% endblock %}
