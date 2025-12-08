@@ -4,15 +4,15 @@
 <div class="detail-container">
 
   <div class="card post-card">
-    <h1 class="post-title">{{ post.title }}</h1>
+    <h1 class="post-title">{{ blogpost.title }}</h1>
     <p class="post-meta">
       Posted by 
-      <a href="{% url 'blogger-details' post.author.pk %}">{{ post.author }}</a> 
-      on {{ post.post_date }}
+      <a href="{% url 'blogger-details' blogpost.author.pk %}">{{ blogpost.author }}</a> 
+      on {{ blogpost.post_date }}
     </p>
     
     <div class="post-body">
-      {{ post.content }}
+      {{ blogpost.content }}
     </div>
   </div>
 
@@ -20,7 +20,7 @@
     <h3>Comments</h3>
     
     <div class="comments-list">
-      {% for comment in post.comments.all %}
+      {% for comment in blogpost.comments.all %}
         <div class="single-comment">
           <p class="comment-header">
             <strong>{{ comment.user.username }}</strong> 
@@ -35,7 +35,7 @@
 
     {% if user.is_authenticated %}
       <div class="add-comment-section">
-        <a href="{% url 'comment-create' post.pk %}" class="btn-primary">Add a Comment</a>
+        <a href="{% url 'comment-create' blogpost.pk %}" class="btn-primary">Add a Comment</a>
       </div>
     {% else %}
       <p><a href="{% url 'login' %}?next={{ request.path }}">Log in</a> to leave a comment.</p>
@@ -44,5 +44,3 @@
 
 </div>
 {% endblock %}
-
-
