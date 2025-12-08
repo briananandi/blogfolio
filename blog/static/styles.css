@@ -330,7 +330,7 @@ footer {
     box-sizing: border-box;
 }
 
-.logout-link:hover {
+.logout-link:hover,.btn-submit:hover, .btn-primary:hover {
     background-color: var(--accent-orange);
     color: var(--bg-dark);
     transform: translateX(5px);
@@ -356,10 +356,10 @@ footer {
     margin-top: 10px;
 }
 
-.btn-submit:hover, .btn-primary:hover {
+/* .btn-submit:hover, .btn-primary:hover {
     background-color: #ffffff;
     color: var(--bg-dark);
-}
+}*/
 
 /* RESPONSIVENESS */
 @media (max-width: 900px) {
@@ -386,3 +386,4 @@ footer {
         position: static;
     }
 }
+
