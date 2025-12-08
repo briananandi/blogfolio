@@ -8,7 +8,7 @@
 {% if blogpost_list %}
   <div class="detail-container">
     {% for post in blogpost_list %}
-      <div class="card post-card" style="margin-bottom: 20px;">
+      <div class="card post-card">
           <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
           <p class="post-meta">
               By <a href="{{ post.author.get_absolute_url }}">{{ post.author.user.username }}</a> 
@@ -42,4 +42,5 @@
   <p>No blog posts yet.</p>
 {% endif %}
 {% endblock %}
+
 
