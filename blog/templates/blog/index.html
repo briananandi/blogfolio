@@ -3,32 +3,29 @@
 {% block title %} - Home{% endblock %}
 
 {% block content %}
-<h2>Welcome to Bree's Blogfolio!</h2>
+<h2>Welcome to the blogfolio!</h2>
 <p>This site is just a peaceful place where words can hang out with each other.</p>
 <br>
 <br>
 
-<h2>Recent Blog Posts</h2>
+<div class="post-card">
+    <h2>Recent Blog Posts</h2>
 
-<div class="posts-preview">
     <!-- Add recent posts preview here -->
     <p><a href="{% url 'blogs' %}">View all blog posts</a></p>
 </div>
-<hr class="divider-orange">
-<hr class="divider-orange">
-<div class="stats-container">
-    <div class="stat-card">
+
         <h3>{{ num_bloggers }}</h3>
         <p><a href="{% url 'bloggers' %}">Total Bloggers</a></p>
-    </div>
-    <div class="stat-card">
+    <br>
+<br>
         <h3>{{ num_blog_posts }}</h3>
         <p><a href="{% url 'blogs' %}">Total Blog Posts</a></p>
-    </div>
-    <div class="stat-card">
+    </div><br>
         <h3>{{ num_comments }}</h3>
         <p>Total Comments</p>
-    </div>
+
 </div>
+
 
 {% endblock %}
