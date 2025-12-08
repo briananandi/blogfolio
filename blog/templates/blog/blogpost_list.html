@@ -15,7 +15,7 @@
               on {{ post.post_date }}
           </p>
           <p class="post-body">{{ post.content|truncatewords:30 }}</p>
-          <a href="{{ post.get_absolute_url }}" class="btn-primary" style="font-size: 0.8em; padding: 8px 16px;">Read More</a>
+          <a href="{{ post.get_absolute_url }}" class="btn-primary">Read More</a>
       </div>
     {% endfor %}
   </div>
@@ -42,3 +42,4 @@
   <p>No blog posts yet.</p>
 {% endif %}
 {% endblock %}
+
