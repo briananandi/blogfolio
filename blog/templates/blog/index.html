@@ -9,23 +9,21 @@
 <br>
 
 <div class="post-card">
-    <h2>Recent Blog Posts</h2>
-
-    <!-- Add recent posts preview here -->
-    <p><a href="{% url 'blogs' %}">View all blog posts</a></p>
-</div>
-
         <h3>{{ num_bloggers }}</h3>
         <p><a href="{% url 'bloggers' %}">Total Bloggers</a></p>
     <br>
 <br>
         <h3>{{ num_blog_posts }}</h3>
         <p><a href="{% url 'blogs' %}">Total Blog Posts</a></p>
-    </div><br>
+    <br>
         <h3>{{ num_comments }}</h3>
         <p>Total Comments</p>
-
+</div>
+</div>
+<div class="post-card">
+    <h2>Recent Blog Posts</h2>
+    <p><a href="{% url 'blogs' %}">View all blog posts</a></p>
 </div>
 
-
 {% endblock %}
+
