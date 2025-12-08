@@ -1,7 +1,8 @@
 {% extends "blog/base_generic.html" %}
 
 {% block content %}
-<h1>Author: {{ blogger.username }}</h1>
+<h1>Author: 
+      <a href="{% url 'blogger-details' blogpost.author.pk %}">{{ blogpost.author }}</a> </h1>
 
 {% if blogger.bio %}
 <p><strong>Bio:</strong> {{ blogger.bio }}</p>
@@ -9,7 +10,8 @@
 
 <hr>
 
-<h3>Posts by {{ blogger.username }}</h3>
+<h3>Posts by 
+      <a href="{% url 'blogger-details' blogpost.author.pk %}">{{ blogpost.author }}</a> </h3>
 
 {% if blog_posts %}
 <ul>
@@ -26,3 +28,4 @@
 
 
 {% endblock %}
+
